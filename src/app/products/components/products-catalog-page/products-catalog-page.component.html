@@ -1,0 +1,17 @@
+<div class="search-sort-container">
+  <input
+    type="text"
+    [(ngModel)]="searchTerm"
+    placeholder="Search products..."
+    (input)="filterAndSortProducts()"
+  />
+  <select [(ngModel)]="sortOrder" (change)="filterAndSortProducts()">
+    <option value="name">Sort by Name</option>
+    <option value="price">Sort by Price</option>
+  </select>
+</div>
+<div class="products-container">
+  <div *ngFor="let product of filteredProducts" class="product-details">
+    <app-product-tile [product]="product"></app-product-tile>
+  </div>
+</div>
