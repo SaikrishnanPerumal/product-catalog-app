@@ -18,24 +18,27 @@ export class ProductsCatalogPageComponent {
   public searchTerm: string = '';
   public sortOrder: string = 'name';
 
+  public currentCategory: string = '';
+
   public constructor(private readonly productService: ProductService) {
     this.products = this.productService.products;
     this.filterAndSortProducts();
-    console.log(this.productService.products);
   }
 
   public filterAndSortProducts(): void {
-    let tempProducts = this.products.filter(product =>
-      product.name.toLowerCase().includes(this.searchTerm.toLowerCase())
-    );
-
-    if (this.sortOrder === 'name') {
-      tempProducts.sort((a, b) => a.name.localeCompare(b.name));
-    } else if (this.sortOrder === 'price') {
-      tempProducts.sort((a, b) => a.cost - b.cost);
-    }
-    console.log({ tempProducts });
+    let tempProducts = this.productService.filterProducts(this.products, this.searchTerm, this.currentCategory);
+    tempProducts = this.productService.sortProducts(tempProducts, this.sortOrder);
 
     this.filteredProducts = tempProducts;
+  }
+
+  public filterByCategory(category: string): void {
+    if (this.currentCategory === category) {
+      this.currentCategory = '';
+      this.filterAndSortProducts();
+      return;
+    }
+    this.currentCategory = category;
+    this.filterAndSortProducts();
   }
 }

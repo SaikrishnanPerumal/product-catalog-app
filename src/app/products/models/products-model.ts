@@ -1,12 +1,13 @@
 export enum ProductType {
     Mobile = 'mobile',
     Laptop = 'laptop',
-    Headphones = 'headphones'
+    Headphone = 'headphone'
 }
 
 export interface IProduct {
+    id: string;
     name: string;
-    cost: number;
+    price: number;
     type: ProductType;
     description: string;
     image?: string;
