@@ -1,14 +1,18 @@
 <div class="search-sort-container">
-  <input
+  <input class="search-product"
     type="text"
     [(ngModel)]="searchTerm"
     placeholder="Search products..."
     (input)="filterAndSortProducts()"
   />
-  <select [(ngModel)]="sortOrder" (change)="filterAndSortProducts()">
+  <select class="select-sort" [(ngModel)]="sortOrder" (change)="filterAndSortProducts()">
     <option value="name">Sort by Name</option>
     <option value="price">Sort by Price</option>
   </select>
+  <!-- Filter Buttons with Class Binding for Active State -->
+  <button class="filter-button" [class.active]="currentCategory === 'mobile'" (click)="filterByCategory('mobile')">Mobile</button>
+  <button class="filter-button" [class.active]="currentCategory === 'laptop'" (click)="filterByCategory('laptop')">Laptop</button>
+  <button class="filter-button" [class.active]="currentCategory === 'headphone'" (click)="filterByCategory('headphone')">Headphone</button>
 </div>
 <div class="products-container">
   <div *ngFor="let product of filteredProducts" class="product-details">

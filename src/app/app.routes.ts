@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { ProductsCatalogPageComponent } from './products/components/products-catalog-page/products-catalog-page.component';
 import { AboutsPageComponent } from './about/components/abouts-page/abouts-page.component';
-import { ProductTileComponent } from './products/components/product-tile/product-tile.component';
+import { ProductDetailsPageComponent } from './products/components/product-details-page/product-details-page.component';
 
 export const routes: Routes = [
     {
@@ -15,8 +15,8 @@ export const routes: Routes = [
         pathMatch: 'full'
     },
     {
-        path: 'product-details',
-        component: ProductTileComponent,
+        path: 'products/product/:id',
+        component: ProductDetailsPageComponent,
         pathMatch: 'full'
     },
     {
