@@ -1,0 +1,17 @@
+.navigation-bar-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem;
+  background-color: #f0f0f0;
+}
+
+.navigation-bar-container a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+.navigation-bar-container a.active {
+  color: #007bff;
+}
